@@ -6,7 +6,8 @@ aws.config.update({
   secretAccessKey: process.env.AWSSecretKey
 })
 
-const S3_BUCKET = process.env.bucket
+
+const S3_BUCKET = process.env.Bucket
 
 exports.s3sign = (req,res) => {
   const s3 = new aws.S3();  
@@ -33,4 +34,16 @@ s3.getSignedUrl('putObject', s3Params, (err, data) => {
     };
     res.json({success:true, data:{returnData}});
   });
+
+var params = {
+  Bucket: process.env.Bucket,
+  Key: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+  };
+
+  s3.deleteObject(params, function(err, data) {
+  if (err) console.log(err, err.stack); // an error occurred
+  else     console.log(data);           // successful response
+  });
+
+
 }

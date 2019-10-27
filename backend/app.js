@@ -4,7 +4,7 @@ try{
   var cors = require('cors');
 
 }catch(error){
-  console.error("ERROR are all the Dependencies installed?");
+  console.error("ERROR");
   console.log(error);
   process.exit(1);
 }
@@ -27,3 +27,4 @@ app.use('/s3sign', s3sign.s3sign);
 app.listen(port);
 
 console.log("Server is runing at port :" + port )
+
