@@ -10,19 +10,18 @@ AWS.config.update({ accessKeyId: process.env.AWSAccessKeyId, secretAccessKey: pr
 const s3 = new AWS.S3();
 
 const params = {
-  Bucket: '281buckete',
+  Bucket: '281bucketf',
   Delimiter: '',
   Prefix: ''
 };
   var filedata = '';
-  app.post('/', function (req, res) {
+  //app.post('/', function (req, res) {
     s3.listObjectsV2(params, (err, data) => {
     if (err) throw err;
     filedata = data.Contents;
     console.log(data.Contents);
    })
-    res.send(filedata);
-  })
+    //res.send(filedata);
+  //})
 
   //app.listen(3001);
-

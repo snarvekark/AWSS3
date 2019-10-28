@@ -1,7 +1,8 @@
 credentials={
- "accessKeyId" : "AKIA5EL2DFN2I4Y7VQMA",
- "secretAccessKey" :"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",
- "proxy":""
+ "accessKeyId" :"",
+ "secretAccessKey" :"",
+ "Bucket" :"281bucketf",
+ "proxy": ""
 }
 module.exports={
  credentials:credentials

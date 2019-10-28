@@ -3,7 +3,8 @@ require('dotenv').config();
 aws.config.update({
   region: 'us-west-2', 
   accessKeyId: process.env.AWSAccessKeyId,
-  secretAccessKey: process.env.AWSSecretKey
+  secretAccessKey: process.env.AWSSecretKey,
+  bucket: process.env.Bucket
 })
 
 
@@ -21,6 +22,7 @@ exports.s3sign = (req,res) => {
     ContentType: fileType,
     ACL: 'public-read'
   };
+  console.log("Params : " + s3Params);
 // Get Url
 s3.getSignedUrl('putObject', s3Params, (err, data) => {
     if(err){
@@ -33,9 +35,10 @@ s3.getSignedUrl('putObject', s3Params, (err, data) => {
       url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
     };
     res.json({success:true, data:{returnData}});
+    console.log(returnData);
   });
 
-var params = {
+/*var params = {
   Bucket: process.env.Bucket,
   Key: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
   };
@@ -43,7 +46,7 @@ var params = {
   s3.deleteObject(params, function(err, data) {
   if (err) console.log(err, err.stack); // an error occurred
   else     console.log(data);           // successful response
-  });
+  });*/
 
 
 }

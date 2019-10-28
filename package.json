@@ -1,0 +1,27 @@
+{
+  "name": "awss3",
+  "version": "1.0.0",
+  "description": "project",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm start",
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client-install": "npm install --prefix client",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snarvekark/AWSS3.git"
+  },
+  "author": "sn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/snarvekark/AWSS3/issues"
+  },
+  "homepage": "https://github.com/snarvekark/AWSS3#readme",
+  "dependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
