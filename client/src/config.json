@@ -1,9 +1,0 @@
-{
-  "cognito": {
-    "REGION": "us-west-2",
-    "USER_POOL_ID": "us-west-2_Zk7DMkO3Z",
-    "APP_CLIENT_ID": "6nrgvh3kqkdjc23g1qehfk0vhg",
-    "BUCKET_NAME": "281bucketd",
-    "IDENTITY_POOL_ID": "us-west-2:9f3cee9c-f662-4bbc-B3d6-2_name8cab5f2f35c"
-  }
-}
