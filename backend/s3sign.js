@@ -3,18 +3,16 @@ require('dotenv').config();
 aws.config.update({
   region: 'us-west-2', 
   accessKeyId: process.env.AWSAccessKeyId,
-  secretAccessKey: process.env.AWSSecretKey,
-  bucket: process.env.Bucket
+  secretAccessKey: process.env.AWSSecretKey
 })
 
-
-const S3_BUCKET = process.env.Bucket
+const S3_BUCKET = process.env.bucket
 
 exports.s3sign = (req,res) => {
-  const s3 = new aws.S3();  
+  const s3 = new aws.S3();  // Create a new instance of S3
   const fileName = req.body.fileName;
-  const fileType = req.body.fileType; 
-// Send to S3 bucket
+  const fileType = req.body.fileType;
+
   const s3Params = {
     Bucket: S3_BUCKET,
     Key: fileName,
@@ -22,31 +20,17 @@ exports.s3sign = (req,res) => {
     ContentType: fileType,
     ACL: 'public-read'
   };
-  console.log("Params : " + s3Params);
-// Get Url
+
 s3.getSignedUrl('putObject', s3Params, (err, data) => {
     if(err){
       console.log(err);
       res.json({success: false, error: err})
     }
-    // Return data
+
     const returnData = {
       signedRequest: data,
       url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
     };
     res.json({success:true, data:{returnData}});
-    console.log(returnData);
   });
-
-/*var params = {
-  Bucket: process.env.Bucket,
-  Key: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
-  };
-
-  s3.deleteObject(params, function(err, data) {
-  if (err) console.log(err, err.stack); // an error occurred
-  else     console.log(data);           // successful response
-  });*/
-
-
 }

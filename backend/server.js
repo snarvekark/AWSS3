@@ -4,19 +4,20 @@ try{
   var cors = require('cors');
 
 }catch(error){
-  console.error("ERROR");
+  console.error("ERROR are all the Dependencies installed?");
   console.log(error);
   process.exit(1);
 }
 
-
+// Config
 var port = 3001;
 
 
-var app = express(); 
+var app = express(); // Define our app
 
 app.use(cors());
-
+// Configure app to use bodyParser()
+// This will let us get data from a POST
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
@@ -26,4 +27,4 @@ app.use('/s3sign', s3sign.s3sign);
 
 app.listen(port);
 
-console.log("Server is runing at port :" + port )
+console.log("Server Started make a request to localhost:" + port )
