@@ -14,7 +14,7 @@
   "author": "SN",
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.556.0",
+    "aws-sdk": "^2.814.0",
     "concurrently": "^5.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
